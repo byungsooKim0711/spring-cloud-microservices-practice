@@ -1,1 +1,1 @@
-- 설정 파일은 https://github.com/byungsooKim0711/spring-cloud-config-server.git에 있습니다.
+- 설정 파일은 https://github.com/byungsooKim0711/spring-cloud-config-server.git 에 있습니다.
