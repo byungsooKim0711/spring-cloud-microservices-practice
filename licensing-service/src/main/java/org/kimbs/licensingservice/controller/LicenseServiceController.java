@@ -47,11 +47,11 @@ public class LicenseServiceController {
 
     @PutMapping("/{licenseId}")
     public String updateLicense(@PathVariable("licenseId") String licenseId) {
-        return String.format("License ID [{0}] the put", licenseId);
+        return String.format("License ID [%s] the put", licenseId);
     }
 
     @DeleteMapping("/{licenseId}")
     public ResponseEntity<String> deleteLicense(@PathVariable("licenseId") String licenseId) {
-        return new ResponseEntity<>(String.format("License ID [{0}] the delete", licenseId), HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(String.format("License ID [%s] the delete", licenseId), HttpStatus.ACCEPTED);
     }
 }
