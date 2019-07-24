@@ -1,17 +1,12 @@
 package org.kimbs.licensingservice.model;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "license")
 @Data
-@Builder
 public class License {
 
     @Id
@@ -35,4 +30,16 @@ public class License {
 
     @Column(name="comment")
     private String comment;
+
+    @Transient
+    private String organizationName = "";
+
+    @Transient
+    private String contactName = "";
+
+    @Transient
+    private String contactPhone = "";
+
+    @Transient
+    private String contactEmail = "";
 }

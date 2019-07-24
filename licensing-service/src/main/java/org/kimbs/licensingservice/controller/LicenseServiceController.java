@@ -1,6 +1,5 @@
 package org.kimbs.licensingservice.controller;
 
-import org.kimbs.licensingservice.config.ServiceConfig;
 import org.kimbs.licensingservice.model.License;
 import org.kimbs.licensingservice.service.LicenseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,17 +18,24 @@ public class LicenseServiceController {
     @Autowired
     private LicenseService licenseService;
 
-    @Autowired
-    private ServiceConfig serviceConfig;
-
     @GetMapping("/")
     public List<License> getLicenses(@PathVariable("organizationId") String organizationId) {
         return licenseService.findByOrganizationId(organizationId);
     }
 
     @GetMapping("/{licenseId}")
-    public ResponseEntity<License> getLicense(@PathVariable("organizationId") String organizationId, @PathVariable("licenseId") String licenseId) throws Exception {
-        final License found = licenseService.findByOrganizationIdAndLicenseId(organizationId, licenseId);
+    public ResponseEntity<License> getLicense(@PathVariable("organizationId") String organizationId, @PathVariable("licenseId") String licenseId) {
+        License found = licenseService.findByOrganizationIdAndLicenseId(organizationId, licenseId, "");
+
+        return new ResponseEntity<>(found, HttpStatus.OK);
+    }
+
+    @GetMapping("/{licenseId}/{clientType}")
+    public ResponseEntity<License> getLicenseWithClientType(@PathVariable("organizationId") String organizationId
+                                                          , @PathVariable("licenseId") String licenseId
+                                                          , @PathVariable("clientType") String clientType) {
+
+        License found = licenseService.findByOrganizationIdAndLicenseId(organizationId, licenseId, clientType);
 
         return new ResponseEntity<>(found, HttpStatus.OK);
     }
@@ -46,12 +52,16 @@ public class LicenseServiceController {
     }
 
     @PutMapping("/{licenseId}")
-    public String updateLicense(@PathVariable("licenseId") String licenseId) {
-        return String.format("License ID [%s] the put", licenseId);
+    public ResponseEntity<License> updateLicense(@PathVariable("licenseId") String licenseId, @RequestBody final License license) {
+        License updated = licenseService.updateLicense(licenseId, license);
+
+        return new ResponseEntity<>(updated, HttpStatus.OK);
     }
 
     @DeleteMapping("/{licenseId}")
     public ResponseEntity<String> deleteLicense(@PathVariable("licenseId") String licenseId) {
-        return new ResponseEntity<>(String.format("License ID [%s] the delete", licenseId), HttpStatus.ACCEPTED);
+        licenseService.deleteLicense(licenseId);
+
+        return ResponseEntity.accepted().build();
     }
 }
