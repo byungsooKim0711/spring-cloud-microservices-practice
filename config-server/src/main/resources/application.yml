@@ -6,6 +6,9 @@ spring:
 ##    active: prod
   cloud:
     config:
+      discovery:
+        enabled: true
+
       server:
         encrypt:
           enabled: false
