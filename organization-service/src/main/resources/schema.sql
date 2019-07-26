@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS organizations;
+DROP TABLE IF EXISTS organization;
 
 CREATE TABLE organization (
     organization_id        VARCHAR(100) PRIMARY KEY NOT NULL,
