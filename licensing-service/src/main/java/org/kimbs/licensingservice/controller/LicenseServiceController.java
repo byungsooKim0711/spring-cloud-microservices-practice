@@ -25,17 +25,7 @@ public class LicenseServiceController {
 
     @GetMapping("/{licenseId}")
     public ResponseEntity<License> getLicense(@PathVariable("organizationId") String organizationId, @PathVariable("licenseId") String licenseId) {
-        License found = licenseService.findByOrganizationIdAndLicenseId(organizationId, licenseId, "");
-
-        return new ResponseEntity<>(found, HttpStatus.OK);
-    }
-
-    @GetMapping("/{licenseId}/{clientType}")
-    public ResponseEntity<License> getLicenseWithClientType(@PathVariable("organizationId") String organizationId
-                                                          , @PathVariable("licenseId") String licenseId
-                                                          , @PathVariable("clientType") String clientType) {
-
-        License found = licenseService.findByOrganizationIdAndLicenseId(organizationId, licenseId, clientType);
+        License found = licenseService.findByOrganizationIdAndLicenseId(organizationId, licenseId);
 
         return new ResponseEntity<>(found, HttpStatus.OK);
     }
