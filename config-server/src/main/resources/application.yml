@@ -14,4 +14,4 @@ spring:
           enabled: false
         git:
           uri: https://github.com/byungsooKim0711/spring-cloud-config-server.git
-          searchPaths: licensingservice, organizationservice, zuulservice
+          searchPaths: licensingservice, organizationservice, zuulservice, authenticationservice
