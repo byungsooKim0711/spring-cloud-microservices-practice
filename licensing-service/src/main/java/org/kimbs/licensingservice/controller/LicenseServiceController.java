@@ -3,6 +3,7 @@ package org.kimbs.licensingservice.controller;
 import org.kimbs.licensingservice.model.License;
 import org.kimbs.licensingservice.service.LicenseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,7 @@ public class LicenseServiceController {
 
     @GetMapping("/")
     public List<License> getLicenses(@PathVariable("organizationId") String organizationId) {
+        System.out.println("test");
         return licenseService.findByOrganizationId(organizationId);
     }
 
