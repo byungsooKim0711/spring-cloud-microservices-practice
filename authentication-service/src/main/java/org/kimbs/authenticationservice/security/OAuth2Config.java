@@ -29,7 +29,6 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         clients.inMemory()
                 .withClient("eagleeye")
                 .secret(PasswordEncoderFactories.createDelegatingPasswordEncoder().encode("thisissecret"))
