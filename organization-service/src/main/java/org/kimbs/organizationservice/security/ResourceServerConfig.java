@@ -13,8 +13,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         // http.authorizeRequests().anyRequest().permitAll();
         http
                 .authorizeRequests()
-                //.antMatchers(HttpMethod.DELETE, "/v1/organizations/**")
-                //.hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/v1/organizations/**")
+                .hasRole("ADMIN")
                 .anyRequest()
                 .authenticated();
     }

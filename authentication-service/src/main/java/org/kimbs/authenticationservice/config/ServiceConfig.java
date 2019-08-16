@@ -1,4 +1,4 @@
-package org.kimbs.licensingservice.config;
+package org.kimbs.authenticationservice.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
