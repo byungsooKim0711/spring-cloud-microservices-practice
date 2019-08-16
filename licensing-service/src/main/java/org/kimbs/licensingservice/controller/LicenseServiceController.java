@@ -21,7 +21,6 @@ public class LicenseServiceController {
 
     @GetMapping("/")
     public List<License> getLicenses(@PathVariable("organizationId") String organizationId) {
-        System.out.println("test");
         return licenseService.findByOrganizationId(organizationId);
     }
 
