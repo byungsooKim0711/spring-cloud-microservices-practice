@@ -6,4 +6,5 @@
 
 ---
 
-zuul filter (SpecialRouterService는 나중에....)
+- [License Service] - OAuth2RestTemplate 로드밸런스 사용하는 방법, RestTemplate 로드밸런스 사용할 때 헤더에 Authorization 추가가 안되는 이유 찾기 (일단은 로드밸런싱 제외)
+- zuul filter (SpecialRouterService는 나중에....)
