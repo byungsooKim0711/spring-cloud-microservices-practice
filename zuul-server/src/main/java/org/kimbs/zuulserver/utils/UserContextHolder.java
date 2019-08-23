@@ -4,21 +4,21 @@ import org.springframework.util.Assert;
 
 public class UserContextHolder {
 
-    private static final ThreadLocal<UserContext> userContexts = new ThreadLocal<>();
+    private static final ThreadLocal<UserContext> userContext = new ThreadLocal<>();
 
     public static final UserContext getContext() {
-        UserContext context = userContexts.get();
+        UserContext context = userContext.get();
 
         if (context == null) {
             context = createEmptyContext();
-            userContexts.set(context);
+            userContext.set(context);
         }
-        return userContexts.get();
+        return userContext.get();
     }
 
-    public static final void setContext(UserContext userContext) {
+    public static final void setContext(UserContext context) {
         Assert.notNull(userContext, "Only non-null UserContext instances are permitted");
-        userContexts.set(userContext);
+        userContext.set(context);
     }
     public static final UserContext createEmptyContext() {
         return new UserContext();
