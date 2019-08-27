@@ -1,4 +1,4 @@
-package org.kimbs.zuulserver.utils;
+package org.kimbs.authenticationservice.utils;
 
 import org.springframework.util.Assert;
 
@@ -6,10 +6,14 @@ public class UserContextHolder {
 
     private static final ThreadLocal<UserContext> userContext = new ThreadLocal<>();
 
+    public static final UserContext createEmptyContext() {
+        return new UserContext();
+    }
+
     public static final UserContext getContext() {
         UserContext context = userContext.get();
 
-        if (context == null) {
+        if(context == null) {
             context = createEmptyContext();
             userContext.set(context);
         }
@@ -17,10 +21,7 @@ public class UserContextHolder {
     }
 
     public static final void setContext(UserContext context) {
-        Assert.notNull(userContext, "Only non-null UserContext instances are permitted");
+        Assert.notNull(context, "Only non-null UserContext instances are permitted");
         userContext.set(context);
-    }
-    public static final UserContext createEmptyContext() {
-        return new UserContext();
     }
 }

@@ -1,4 +1,4 @@
-package org.kimbs.zuulserver.utils;
+package org.kimbs.authenticationservice.utils;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpRequest;
@@ -15,6 +15,7 @@ public class UserContextInterceptor implements ClientHttpRequestInterceptor {
 
         headers.add(UserContext.CORRELATION_ID, UserContextHolder.getContext().getCorrelationId());
         headers.add(UserContext.AUTH_TOKEN, UserContextHolder.getContext().getAuthToken());
+
         return clientHttpRequestExecution.execute(httpRequest, bytes);
     }
 }

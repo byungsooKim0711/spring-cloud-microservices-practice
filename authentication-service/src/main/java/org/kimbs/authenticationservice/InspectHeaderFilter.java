@@ -25,6 +25,6 @@ public class InspectHeaderFilter implements Filter {
 
         System.out.println("I am hitting the auth server : " + httpServletRequest.getHeader("Authorization"));
 
-        filterChain.doFilter(servletRequest, servletResponse);
+        filterChain.doFilter(httpServletRequest, servletResponse);
     }
 }
