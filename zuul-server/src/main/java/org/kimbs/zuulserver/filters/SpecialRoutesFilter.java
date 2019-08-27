@@ -4,16 +4,14 @@ import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.netflix.zuul.filters.ProxyRequestHelper;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.http.HttpServletRequest;
 
 @Component
 public class SpecialRoutesFilter extends ZuulFilter {
 
     private static final int FILTER_ORDER =  1;
-    private static final boolean SHOULD_FILTER =true;
+    private static final boolean SHOULD_FILTER = false;
 
     @Autowired
     private FilterUtils filterUtils;

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 public class FilterUtils {
 
     public static final String CORRELATION_ID    = "tmx-correlation-id";
-    public static final String AUTH_TOKEN        = "tmx-auth-token";
+    public static final String AUTH_TOKEN        = "Authorization";
     public static final String USER_ID           = "tmx-user-id";
     public static final String ORG_ID            = "tmx-org-id";
     public static final String PRE_FILTER_TYPE   = "pre";
@@ -16,55 +16,56 @@ public class FilterUtils {
 
     public String getCorrelationId(){
         RequestContext requestContext = RequestContext.getCurrentContext();
+
         if (requestContext.getRequest().getHeader(CORRELATION_ID) != null) {
             return requestContext.getRequest().getHeader(CORRELATION_ID);
         }
-        else{
+        else {
             return  requestContext.getZuulRequestHeaders().get(CORRELATION_ID);
         }
     }
 
-    public void setCorrelationId(String correlationId){
+    public void setCorrelationId(String correlationId) {
         RequestContext requestContext = RequestContext.getCurrentContext();
         requestContext.addZuulRequestHeader(CORRELATION_ID, correlationId);
     }
 
-    public final String getOrgId(){
+    public final String getOrgId() {
         RequestContext requestContext = RequestContext.getCurrentContext();
         if (requestContext.getRequest().getHeader(ORG_ID) != null) {
             return requestContext.getRequest().getHeader(ORG_ID);
         }
-        else{
+        else {
             return requestContext.getZuulRequestHeaders().get(ORG_ID);
         }
     }
 
-    public void setOrgId(String orgId){
+    public void setOrgId(String orgId) {
         RequestContext requestContext = RequestContext.getCurrentContext();
         requestContext.addZuulRequestHeader(ORG_ID, orgId);
     }
 
-    public final String getUserId(){
+    public final String getUserId() {
         RequestContext requestContext = RequestContext.getCurrentContext();
         if (requestContext.getRequest().getHeader(USER_ID) != null) {
             return requestContext.getRequest().getHeader(USER_ID);
         }
-        else{
+        else {
             return requestContext.getZuulRequestHeaders().get(USER_ID);
         }
     }
 
-    public void setUserId(String userId){
+    public void setUserId(String userId) {
         RequestContext requestContext = RequestContext.getCurrentContext();
         requestContext.addZuulRequestHeader(USER_ID, userId);
     }
 
-    public final String getAuthToken(){
+    public final String getAuthToken() {
         RequestContext requestContext = RequestContext.getCurrentContext();
         return requestContext.getRequest().getHeader(AUTH_TOKEN);
     }
 
-    public String getServiceId(){
+    public String getServiceId() {
         RequestContext requestContext = RequestContext.getCurrentContext();
 
         //We might not have a service id if we are using a static, non-eureka route.
