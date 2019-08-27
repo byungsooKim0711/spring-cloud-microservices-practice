@@ -6,7 +6,7 @@
 
 ---
 
-- ~~ [License Service] - OAuth2RestTemplate 로드밸런스 사용하는 방법, RestTemplate 로드밸런스 사용할 때 헤더에 Authorization 추가가 안되는 이유 찾기 (일단은 로드밸런싱 제외) *Postman 사용을 잘못함* ~~
+- ~~[License Service] - OAuth2RestTemplate 로드밸런스 사용하는 방법, RestTemplate 로드밸런스 사용할 때 헤더에 Authorization 추가가 안되는 이유 찾기 (일단은 로드밸런싱 제외) *Postman 사용을 잘못함.~~
 - zuul filter (SpecialRouterService는 나중에....)
 - Spring Cloud Stream kafka 추가 예정
 - JWT 좀 더 자세히 공부한 후에 추가
