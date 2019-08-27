@@ -10,4 +10,4 @@
 - zuul filter (SpecialRouterService는 나중에....)
 - Spring Cloud Stream kafka 추가 예정
 - JWT 좀 더 자세히 공부한 후에 추가
-- 
+- Kafka 가 어느정도 익숙해지면 RabbitMQ로 변경예정
