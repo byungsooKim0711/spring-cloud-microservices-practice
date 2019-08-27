@@ -32,11 +32,11 @@ public class LicenseServiceController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<License> saveLicense(@PathVariable("organizationId") String organizationId, @RequestBody final License license, final UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<License> saveLicense(@RequestBody final License license, final UriComponentsBuilder uriBuilder) {
         License created = licenseService.saveLicense(license);
 
         final HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(uriBuilder.path("/v1/organizations/{organizationId}/licenses/{licenseId}").buildAndExpand(organizationId, created.getLicenseId()).toUri());
+        headers.setLocation(uriBuilder.path("/v1/organizations/{organizationId}/licenses/{licenseId}").buildAndExpand(created.getOrganizationId(), created.getLicenseId()).toUri());
 
         return new ResponseEntity<>(created, headers, HttpStatus.CREATED);
 

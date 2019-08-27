@@ -3,14 +3,11 @@ package org.kimbs.licensingservice;
 import org.kimbs.licensingservice.utils.UserContextInterceptor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.security.oauth2.resource.UserInfoRestTemplateFactory;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Primary;
-import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.web.client.RestTemplate;
 
@@ -28,20 +25,9 @@ public class LicensingServiceApplication {
         SpringApplication.run(LicensingServiceApplication.class, args);
     }
 
-    /*@LoadBalanced
+    @LoadBalanced
     @Bean
     public RestTemplate getRestTemplate() {
-        return new RestTemplate();
-    }*/
-
-    @Bean
-    public OAuth2RestTemplate restTemplate(UserInfoRestTemplateFactory factory) {
-        return factory.getUserInfoRestTemplate();
-    }
-
-    /*@Primary
-    @Bean
-    public RestTemplate restTemplate() {
         RestTemplate restTemplate = new RestTemplate();
         List interceptors = restTemplate.getInterceptors();
         if (interceptors == null) {
@@ -52,5 +38,5 @@ public class LicensingServiceApplication {
         }
 
         return restTemplate;
-    }*/
+    }
 }
