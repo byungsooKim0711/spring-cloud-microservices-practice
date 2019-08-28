@@ -1,3 +1,21 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: organizationChangeTopic
+          content-type: application/json
+          group: licensingGroup
+      kafka:
+        binder:
+          brokers: localhost:9092
+
+#        kafka:
+#          binder:
+#            zk-nodes: localhost
+#            brokers: localhost
+
+
 security:
   oauth2:
     resource:
