@@ -1,10 +1,11 @@
 package org.kimbs.licensingservice.config;
 
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 @Component
+@Getter
 public class ServiceConfig {
 
     @Value("${example.property}")
@@ -13,12 +14,13 @@ public class ServiceConfig {
     @Value("${signing.key}")
     private String jwtSigningKey="";
 
+    @Value("${redis.server}")
+    private String redisServer = "";
 
-    public String getJwtSigningKey() {
-        return jwtSigningKey;
-    }
+    @Value("${redis.port}")
+    private String redisPort = "";
 
-    public String getExampleProperty(){
-        return exampleProperty;
+    public Integer getRedisPort() {
+        return Integer.parseInt(this.redisPort);
     }
 }

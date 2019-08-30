@@ -28,13 +28,11 @@ public class LicenseService {
     private ServiceConfig serviceConfig;
 
     @Autowired
-    OrganizationRestTemplateClient organizationRestTemplateClient;
+    private OrganizationRestTemplateClient organizationRestTemplateClient;
 
     @HystrixCommand
     private Organization retrieveOrgInfo(String organizationId) {
-        Optional<Organization> organization =  organizationRestTemplateClient.getOrganization(organizationId);
-
-        return organization.orElseThrow(() -> new ResourceNotFoundException(String.format("Resource Not Found Exception With Org ID: [%s]", organizationId)));
+        return organizationRestTemplateClient.getOrganization(organizationId);
     }
 
     public License findByOrganizationIdAndLicenseId(String organizationId, String licenseId) {
